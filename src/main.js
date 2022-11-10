@@ -1,4 +1,6 @@
 import "./bWLwgP.css"
+import Plotly from 'plotly.js-dist-min'
+
 // import "./style.css";
 // import javascriptLogo from "../static/javascript.svg";
 // import { setupCounter } from "./counter.js";
