@@ -1,17 +1,19 @@
 {
-  "name": "plotly-template-v001",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^3.2.3"
-  },
-  "dependencies": {
-    "plotly.js-dist-min": "^2.16.1"
-  }
+	"name": "plotly-template-v001",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"deploy": "vercel --prod"
+	},
+	"devDependencies": {
+		"vite": "^3.2.3"
+	},
+	"dependencies": {
+		"plotly.js-dist-min": "^2.16.1",
+		"vercel": "^28.4.17"
+	}
 }
