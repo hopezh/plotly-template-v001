@@ -5,7 +5,7 @@ from dash import Dash, dcc, html, Input, Output
 
 # Preparing your data for usage *******************************************
 
-df = pd.read_csv("../../static/data/tweets.csv")
+df = pd.read_csv("tweets.csv")
 df["name"] = pd.Series(df["name"]).str.lower()
 df["date_time"] = pd.to_datetime(df["date_time"])
 df = (
