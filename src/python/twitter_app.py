@@ -30,7 +30,14 @@ app.layout = html.Div(
             ),
             className="row",
         ),
-        html.Div(dcc.Graph(id="line-chart", figure={}), className="row"),
+        html.Div(
+            dcc.Graph(
+                id="line-chart", 
+                figure={}
+            ), 
+            className="row"
+        ),
+
         html.Div(
             [
                 html.Div(
@@ -80,14 +87,18 @@ def update_graph(chosen_value):
             color="name",
             # height=500, # not working...
             log_y=True,
+            hover_data={'number_of_likes': ':,'}, # format num with comma as K seperator
+            # hover_data=['number_of_shares'],
+            # hover_data={ 'number_of_shares' : False },  # hide hover tip
             labels={
                 "date_time": "Date",
                 "number_of_likes": "Num of Likes",
                 "name": "Name of Celebrity",
+                'number_of_shares': "Num of Shares", 
             },
         )
         return fig
 
-
+# run app *****************************************************************
 if __name__ == "__main__":
     app.run_server(debug=True)
