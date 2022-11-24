@@ -1,7 +1,9 @@
 import "./bWLwgP.css";
 import Plotly from "plotly.js-dist-min";
+import * as d3 from "d3";
 
 // create the twitter app
+
 
 
 // test ========================================================================
