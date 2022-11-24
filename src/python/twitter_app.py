@@ -26,10 +26,12 @@ app.layout = html.Div(
     [
         html.Div(
             html.H1(
-                "Twitter Likes Analysis of Famous People", style={"textAlign": "center"}
+                "Twitter Likes Analysis of Famous People", 
+                style={"textAlign": "center"}
             ),
             className="row",
         ),
+
         html.Div(
             dcc.Graph(
                 id="line-chart", 
@@ -42,27 +44,27 @@ app.layout = html.Div(
             [
                 html.Div(
                     dcc.Dropdown(
-                        id="my-dropdown",
-                        multi=True,
-                        options=[
+                        id      = "my-dropdown",
+                        multi   = True,
+                        options = [
                             {"label": x, "value": x}
                             for x in sorted(df["name"].unique())
                         ],
                         value=["taylorswift13", "cristiano", "jtimberlake"],
                     ),
-                    className="three columns",
+                    className = "three columns",
                 ),
                 html.Div(
                     html.A(
-                        id="my-link",
-                        children="Click here to Visit Twitter",
-                        href="https://twitter.com/explore",
-                        target="_blank",
+                        id       = "my-link",
+                        children = "Click here to Visit Twitter",
+                        href     = "https://twitter.com/explore",
+                        target   = "_blank",
                     ),
-                    className="two columns",
+                    className = "two columns",
                 ),
             ],
-            className="row",
+            className = "row",
         ),
     ]
 )
@@ -81,20 +83,20 @@ def update_graph(chosen_value):
     else:
         df_filtered = df[df["name"].isin(chosen_value)]
         fig = px.line(
-            data_frame=df_filtered,
-            x="date_time",
-            y="number_of_likes",
-            color="name",
-            # height=500, # not working...
-            log_y=True,
-            hover_data={'number_of_likes': ':,'}, # format num with comma as K seperator
-            # hover_data=['number_of_shares'],
-            # hover_data={ 'number_of_shares' : False },  # hide hover tip
-            labels={
-                "date_time": "Date",
-                "number_of_likes": "Num of Likes",
-                "name": "Name of Celebrity",
-                'number_of_shares': "Num of Shares", 
+              data_frame = df_filtered,
+              x          = "date_time",
+              y          = "number_of_likes",
+              color      = "name",
+            # height     = 500,                            # not working...
+              log_y      = True,
+              hover_data = {'number_of_likes': ':,'},      # format num with comma as K seperator
+            # hover_data = ['number_of_shares'],
+            # hover_data = { 'number_of_shares' : False }, # hide hover tip
+              labels     = {
+                "date_time"       : "Date",
+                "number_of_likes" : "Num of Likes",
+                "name"            : "Name of Celebrity",
+                'number_of_shares': "Num of Shares",
             },
         )
         return fig
