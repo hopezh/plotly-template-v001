@@ -78,11 +78,12 @@ def update_graph(chosen_value):
             x="date_time",
             y="number_of_likes",
             color="name",
+            # height=500, # not working...
             log_y=True,
             labels={
-                "number_of_likes": "Likes",
                 "date_time": "Date",
-                "name": "Celebrity",
+                "number_of_likes": "Num of Likes",
+                "name": "Name of Celebrity",
             },
         )
         return fig
