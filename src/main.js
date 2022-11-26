@@ -3,7 +3,7 @@ import Plotly from "plotly.js-dist-min";
 import * as d3 from "d3";
 
 // create the twitter app
-
+console.log(dfd);
 
 
 // test ========================================================================
@@ -20,7 +20,7 @@ var trace1_2 = {
 	y: [16, 5, 11, 9],
 	mode: "lines",
 	type: "scatter",
-};
+};import * as dfd from "danfojs-node"
 
 var trace1_3 = {
 	x: [1, 2, 3, 4],
