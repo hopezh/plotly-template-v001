@@ -19,19 +19,22 @@ const url =
 // 	});
 
 // option 2: apply async func to read csv --------------------------------------
+
 const readCSV = async (url) => {
 	try {
 		const df = await dfd.readCSV(url);
+
 		console.log("df head: ");
 		console.log(df.head()); // print head as an object
 		df.head().print(); // print head as a table
+
 		console.log("column type:");
 		df.ctypes.print();
 	} catch (error) {
 		console.error(error);
 	}
 };
-// readCSV(url);
+// readCSV(url)
 
 // test ########################################################################
 let syncarray = ["1", "2", "3"];
