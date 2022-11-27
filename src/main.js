@@ -19,23 +19,38 @@ const url =
 // 	});
 
 // option 2: apply async func to read csv --------------------------------------
-const readCSV2 = async (url) => {
+
+// const readCSV2 = async (url) => {}	// alternatively, use fat arrow func
+
+async function readCSV2(url) {
 	try {
 		const df = await dfd.readCSV(url);
 
-		console.log('df describe: ');
-		df.describe().print();	// print df describe as a table
+		console.log("df describe: ");
+		df.describe().print(); // print df describe as a table
 
-		console.log("df head: ");
-		df.head().print(); // print head as a table
-
-		console.log("column type:");
-		df.ctypes.print();	// print the type of each colmn as a table 
+		return df;
 	} catch (error) {
 		console.error(error);
 	}
-};
-readCSV2(url)
+}
+
+// readCSV2(url).then((df) => {
+// 	console.log("df head: ");
+// 	df.head().print(); // print df head as a table
+
+// 	console.log("column type:");
+// 	df.ctypes.print();	// print the type of each colmn as a table
+// });
+
+
+// option 3 --------------------------------------------------------------------
+async function load_process_data(url) {
+	let df = await dfd.readCSV(url);
+	df.head().print();
+}
+
+// load_process_data(url)
 
 // test ########################################################################
 let syncarray = ["1", "2", "3"];
