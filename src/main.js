@@ -5,7 +5,7 @@ import Plotly from "plotly.js-dist-min";
 const url =
 	"https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv";
 
-// option 1: promise resolution ------------------------------------------------ 
+// option 1: promise resolution ------------------------------------------------
 // dfd.readCSV(url)
 // 	.then((df) => {
 // 		//do something like display descriptive statistics
@@ -22,15 +22,14 @@ const url =
 const readCSV = async (url) => {
 	try {
 		const df = await dfd.readCSV(url);
-		console.log("df tail: ");
-		console.log(df.tail());
-		df.tail().print();
+		console.log("df head: ");
+		console.log(df.head()); // print head as an object
+		df.head().print(); // print head as a table
+		// return df;
 	} catch (error) {
 		console.error(error);
-		// console.log('sth went wrong...');
 	}
 };
-
 readCSV(url);
 
 
