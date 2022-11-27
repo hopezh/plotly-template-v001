@@ -1,16 +1,38 @@
 import "./bWLwgP.css";
 import Plotly from "plotly.js-dist-min";
 
-// use danfo.js to read csv as DataFrame like object
-const url = "https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv"
-dfd.readCSV(url)
-	.then((df) => {
-		//do something like display descriptive statistics
-		df.describe().print();
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+// use danfo.js to read csv as DataFrame like object ###########################
+const url =
+	"https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv";
+
+// option 1: promise resolution ------------------------------------------------ 
+// dfd.readCSV(url)
+// 	.then((df) => {
+// 		//do something like display descriptive statistics
+// 		// df.describe().print();
+// 		console.log("df head: ");
+// 		console.log(df.head());
+// 		df.head().print();
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
+
+// option 2: apply async func to read csv --------------------------------------
+const readCSV = async (url) => {
+	try {
+		const df = await dfd.readCSV(url);
+		console.log("df tail: ");
+		console.log(df.tail());
+		df.tail().print();
+	} catch (error) {
+		console.error(error);
+		// console.log('sth went wrong...');
+	}
+};
+
+readCSV(url);
+
 
 // test ========================================================================
 // chart 1 ---------------------------------------------------------------------
