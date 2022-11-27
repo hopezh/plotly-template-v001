@@ -22,18 +22,18 @@ const url =
 
 // const readCSV2 = async (url) => {}	// alternatively, use fat arrow func
 
-async function readCSV2(url) {
-	try {
-		const df = await dfd.readCSV(url);
+// async function readCSV2(url) {
+// 	try {
+// 		const df = await dfd.readCSV(url);
 
-		console.log("df describe: ");
-		df.describe().print(); // print df describe as a table
+// 		console.log("df describe: ");
+// 		df.describe().print(); // print df describe as a table
 
-		return df;
-	} catch (error) {
-		console.error(error);
-	}
-}
+// 		return df;
+// 	} catch (error) {
+// 		console.error(error);
+// 	}
+// }
 
 // readCSV2(url).then((df) => {
 // 	console.log("df head: ");
@@ -47,45 +47,11 @@ async function readCSV2(url) {
 // option 3 --------------------------------------------------------------------
 async function load_process_data(url) {
 	let df = await dfd.readCSV(url);
-	df.head().print();
+	// df.head().print();
+	return df 
 }
+load_process_data(url)
 
-// load_process_data(url)
-
-// test ########################################################################
-let syncarray = ["1", "2", "3"];
-
-function addB(callback) {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			syncarray.forEach((value, idx) => {
-				syncarray[idx] = value + "+B";
-			});
-			resolve();
-			// callback(); // call the callback func here
-			// console.log("done adding B");
-		}, 1000);
-	});
-}
-
-addB().then(() => {
-	console.log(syncarray);
-});
-
-// addB(() => {
-// 	// do sth after the syncarray has been updated
-// 	// console.log('the updated syncarray is: ');
-// 	// console.log(syncarray);
-// 	setTimeout(() => {
-// 		syncarray.forEach((value, idx) => {
-// 			syncarray[idx] = value + "+A";
-// 		});
-// 		console.log(syncarray);
-// 	}, 1000);
-// });
-
-console.log("original syncarray is: ");
-console.log(syncarray);
 
 // test ========================================================================
 // chart 1 ---------------------------------------------------------------------
