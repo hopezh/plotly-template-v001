@@ -25,13 +25,29 @@ const readCSV = async (url) => {
 		console.log("df head: ");
 		console.log(df.head()); // print head as an object
 		df.head().print(); // print head as a table
-		// return df;
+		console.log("column type:");
+		df.ctypes.print();
 	} catch (error) {
 		console.error(error);
 	}
 };
-readCSV(url);
+// readCSV(url);
 
+// test ########################################################################
+let syncarray = ["1", "2", "3"];
+
+function addB() {
+	setTimeout(() => {
+		syncarray.forEach((value, idx) => {
+			syncarray[idx] = value + "+B";
+		});
+		console.log("done adding B");
+	}, 1000);
+}
+
+addB();
+
+console.log(syncarray);
 
 // test ========================================================================
 // chart 1 ---------------------------------------------------------------------
