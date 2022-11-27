@@ -5,6 +5,8 @@ import Plotly from "plotly.js-dist-min";
 const url =
 	"https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv";
 
+const appleCSV = '../static/data/apple.csv'
+
 // option 1: promise resolution ------------------------------------------------
 // dfd.readCSV(url)
 // 	.then((df) => {
@@ -22,7 +24,7 @@ const url =
 
 // const readCSV2 = async (url) => {}	// alternatively, use fat arrow func
 
-async function readCSV2(url) {
+async function readCSV2(appleCSV) {
 	try {
 		const df = await dfd.readCSV(url);
 
