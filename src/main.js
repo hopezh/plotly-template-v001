@@ -2,9 +2,8 @@ import "./bWLwgP.css";
 import Plotly from "plotly.js-dist-min";
 
 // use danfo.js to read csv as DataFrame like object
-dfd.readCSV(
-	"https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv"
-)
+const url = "https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv"
+dfd.readCSV(url)
 	.then((df) => {
 		//do something like display descriptive statistics
 		df.describe().print();
