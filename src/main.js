@@ -36,17 +36,29 @@ const readCSV = async (url) => {
 // test ########################################################################
 let syncarray = ["1", "2", "3"];
 
-function addB() {
+function addB(callback) {
 	setTimeout(() => {
 		syncarray.forEach((value, idx) => {
 			syncarray[idx] = value + "+B";
 		});
-		console.log("done adding B");
+		callback(); // call the callback func here
+		// console.log("done adding B");
 	}, 1000);
 }
 
-addB();
+addB(() => {
+	// do sth after the syncarray has been updated
+	// console.log('the updated syncarray is: ');
+	// console.log(syncarray);
+	setTimeout(() => {
+		syncarray.forEach((value, idx) => {
+			syncarray[idx] = value + "+A";
+		});
+		console.log(syncarray);
+	}, 1000);
+});
 
+console.log('original syncarray is: ');
 console.log(syncarray);
 
 // test ========================================================================
