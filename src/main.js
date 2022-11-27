@@ -9,7 +9,7 @@ const url =
 // dfd.readCSV(url)
 // 	.then((df) => {
 // 		//do something like display descriptive statistics
-// 		// df.describe().print();
+// 		df.describe().print();
 // 		console.log("df head: ");
 // 		console.log(df.head());
 // 		df.head().print();
@@ -19,22 +19,23 @@ const url =
 // 	});
 
 // option 2: apply async func to read csv --------------------------------------
-
-const readCSV = async (url) => {
+const readCSV2 = async (url) => {
 	try {
 		const df = await dfd.readCSV(url);
 
+		console.log('df describe: ');
+		df.describe().print();	// print df describe as a table
+
 		console.log("df head: ");
-		console.log(df.head()); // print head as an object
 		df.head().print(); // print head as a table
 
 		console.log("column type:");
-		df.ctypes.print();
+		df.ctypes.print();	// print the type of each colmn as a table 
 	} catch (error) {
 		console.error(error);
 	}
 };
-// readCSV(url)
+readCSV2(url)
 
 // test ########################################################################
 let syncarray = ["1", "2", "3"];
