@@ -50,9 +50,12 @@ myDF
 		df.ctypes.print();	// print the type of each colmn as a table
 	})
 
+// create line chart using danfo plot
 myDF
 	.then((df)=> {
-		df['Date'].print()
+		// console.log( df['Date'] )
+		var new_df = df.setIndex({column: "Date"})
+		new_df['AAPL.Open'].plot(("plotly-g00")).line()
 	})
 
 // readCSV2(url).then((df) => {
