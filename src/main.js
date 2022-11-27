@@ -22,18 +22,38 @@ const url =
 
 // const readCSV2 = async (url) => {}	// alternatively, use fat arrow func
 
-// async function readCSV2(url) {
-// 	try {
-// 		const df = await dfd.readCSV(url);
+async function readCSV2(url) {
+	try {
+		const df = await dfd.readCSV(url);
 
-// 		console.log("df describe: ");
-// 		df.describe().print(); // print df describe as a table
+		console.log("df describe: ");
+		df.describe().print(); // print df describe as a table
 
-// 		return df;
-// 	} catch (error) {
-// 		console.error(error);
-// 	}
-// }
+		return df;
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+const myDF = readCSV2(url)	// store the returned promiss in a var 
+
+// use .then() to get the data in the returned promise 
+myDF
+	.then((df)=> {
+		console.log("df head: ");
+		df.head().print(); // print df head as a table
+	})
+
+myDF
+	.then((df)=> {
+		console.log("column type:");
+		df.ctypes.print();	// print the type of each colmn as a table
+	})
+
+myDF
+	.then((df)=> {
+		df['Date'].print()
+	})
 
 // readCSV2(url).then((df) => {
 // 	console.log("df head: ");
