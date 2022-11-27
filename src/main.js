@@ -37,28 +37,35 @@ const readCSV = async (url) => {
 let syncarray = ["1", "2", "3"];
 
 function addB(callback) {
-	setTimeout(() => {
-		syncarray.forEach((value, idx) => {
-			syncarray[idx] = value + "+B";
-		});
-		callback(); // call the callback func here
-		// console.log("done adding B");
-	}, 1000);
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			syncarray.forEach((value, idx) => {
+				syncarray[idx] = value + "+B";
+			});
+			resolve();
+			// callback(); // call the callback func here
+			// console.log("done adding B");
+		}, 1000);
+	});
 }
 
-addB(() => {
-	// do sth after the syncarray has been updated
-	// console.log('the updated syncarray is: ');
-	// console.log(syncarray);
-	setTimeout(() => {
-		syncarray.forEach((value, idx) => {
-			syncarray[idx] = value + "+A";
-		});
-		console.log(syncarray);
-	}, 1000);
+addB().then(() => {
+	console.log(syncarray);
 });
 
-console.log('original syncarray is: ');
+// addB(() => {
+// 	// do sth after the syncarray has been updated
+// 	// console.log('the updated syncarray is: ');
+// 	// console.log(syncarray);
+// 	setTimeout(() => {
+// 		syncarray.forEach((value, idx) => {
+// 			syncarray[idx] = value + "+A";
+// 		});
+// 		console.log(syncarray);
+// 	}, 1000);
+// });
+
+console.log("original syncarray is: ");
 console.log(syncarray);
 
 // test ========================================================================
