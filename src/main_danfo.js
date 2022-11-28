@@ -9,10 +9,20 @@ const url =
 const appleCSV = "../static/data/apple.csv";
 
 // func to create line chart ---------------------------------------------------------
+/**
+ * @param {object} _df 	- danfo datafram object inside the promise returned from dfd.readCSV()
+ * @param {string} _col	- name of the column in the datafram to be plotted
+ * @param {string} _div - div id on which to draw the plot
+ */
 function addLineChart(_df, _col, _div) {
 	var new_df = _df.setIndex({ column: "Date" });
 	new_df[_col].plot(_div).line();
 }
+
+// const addLineChart = (_df, _col, _div) => {	// alternatively, use arrow func 
+// 	var new_df = _df.setIndex({ column: "Date" });
+// 	new_df[_col].plot(_div).line();
+// }
 
 // option 1: promise resolution ------------------------------------------------
 // dfd.readCSV(url)
@@ -31,7 +41,7 @@ function addLineChart(_df, _col, _div) {
 
 // option 2: apply async func to read csv --------------------------------------
 // const readCSV = async (url) => {}	// alternatively, use fat arrow func
-async function readCSV(appleCSV) {
+async function readCSV(url) {
 	try {
 		const df = await dfd.readCSV(url);
 		return df;
