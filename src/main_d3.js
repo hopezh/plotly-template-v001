@@ -45,15 +45,22 @@ const appleCSV = "../static/data/apple.csv";
 // });
 
 // func to create line chart ---------------------------------------------------
-const addLineChart = (_x, _y, _div) => {
-	var trace = {
+const addLineChart = (_x, _y1, _y2, _div) => {
+	var trace1 = {
 		x: _x,
-		y: _y,
+		y: _y1,
 		mode: "lines",
 		type: "scatter",
 	};
 
-	var data = [trace];
+	var trace2 = {
+		x: _x,
+		y: _y2,
+		mode: "lines",
+		type: "scatter",
+	};
+
+	var data = [trace1, trace2];
 
 	Plotly.newPlot(_div, data);
 };
@@ -61,16 +68,22 @@ const addLineChart = (_x, _y, _div) => {
 // get data by column name -----------------------------------------------------
 const data2 = d3.csv(csvURL);
 
-let date = [];
-let AAPL_Open = [];
+let Date = [];
+let AAPL_High = [];
+let AAPL_Low = [];
 
+// prettier-ignore
 data2.then((data) => {
-	date = data.map((row) => row["Date"]);
-	AAPL_Open = data.map((row) => row["AAPL.Open"]);
+	Date      = data.map((row) => row["Date"]);
+	AAPL_High = data.map((row) => row["AAPL.High"]);
+	AAPL_Low  = data.map((row) => row["AAPL.Low"]);
 
-	console.log(date);
-	console.log(AAPL_Open);
-
-    addLineChart(date, AAPL_Open, 'plotly-g00');
+	addLineChart(Date, AAPL_High, AAPL_Low, "plotly-g00");
 });
 
+// the array 'Date' updated inside a .then() can only be accessed in another .then()
+data2.then(() => {
+	console.log(Date);
+});
+
+console.log(Date);
